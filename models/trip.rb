@@ -2,10 +2,11 @@
 
 class Trip < ActiveRecord::Base
     belongs_to :user
+    has_many :activities
 
     def upcoming?
        start_date >= Date.today
-end
+    end
 
 def past 
 past_trips = []

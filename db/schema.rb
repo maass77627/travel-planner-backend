@@ -10,11 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_18_023330) do
+  create_table "activities", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "day"
+    t.string "location"
+    t.string "name"
+    t.text "notes"
+    t.string "time"
+    t.integer "trip_id"
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.text "description"
     t.string "destination"
     t.date "end_date"
+    t.string "image_url"
     t.string "name"
     t.date "start_date"
     t.datetime "updated_at", null: false
@@ -25,6 +39,7 @@ ActiveRecord::Schema[8.1].define(version: 2) do
     t.datetime "created_at", null: false
     t.string "email"
     t.string "name"
+    t.string "password_digest"
     t.datetime "updated_at", null: false
   end
 end
