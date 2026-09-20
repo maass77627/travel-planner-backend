@@ -18,20 +18,22 @@ end
 past_trips
 end
 
-def trip_count
+def self.trip_count
 Trip.all.length
 
 end
 
+def self.next_trip 
+trip = Trip.order(:start_date).first
+trip.to_json
+end
 
-def destinations
-destinations = []
 
-  Trip.all.each do |trip|
-    destinations.push(trip.destination)
+
+def self.destinations
+  Trip.all.map do |trip|
+    trip.destination
   end
-
-  destinations
 end
 
 def find_trip(name)
@@ -40,12 +42,7 @@ Trip.all.find do |trip|
 end
 end
 
-def next_trip
-upcoming_trips = Trip.all.select do |trip|
-    trip.upcoming?
-end
-upcoming_trips.sort_by {|trip| trip.start_date}.first
-end
+
 
 
 

@@ -62,6 +62,10 @@ get "/test-activity/:id" do
   activity.to_json
 end
 
+get "/trips/count" do
+  Trip.trip_count.to_json
+end
+
 # delete "/activities/:id" do
   # puts "DELETE ID: #{params[:id]}"
 
@@ -134,6 +138,14 @@ post "/signup" do
   })
 user.to_json
 
+end
+
+get "/destinations" do
+  Trip.destinations.to_json
+end
+
+get "/next_trip" do
+  Trip.next_trip.to_json
 end
 
 post "/login" do 
